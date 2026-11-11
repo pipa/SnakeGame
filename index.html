@@ -1,15 +1,63 @@
 <!doctype html>
-<html class="no-js" lang="">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Snake</title>
-  <meta name="description" content="Just a snake game">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="./dist/master.css">
-</head>
-<body>
-  <canvas id="stage"></canvas>
-  <script src="./dist/bundle.js" async defer></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Snake</title>
+    <meta name="description" content="A neon browser snake game. Arrow keys, WASD or swipe." />
+    <meta name="theme-color" content="#050b1a" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icon-32.png" />
+    <link rel="apple-touch-icon" href="./assets/icon-180.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="hud">
+        <h1 class="brand"><img src="./assets/icon-192.png" alt="" width="32" height="32" />Snake</h1>
+        <dl class="scores">
+          <div>
+            <dt>Score</dt>
+            <dd id="score">0</dd>
+          </div>
+          <div>
+            <dt>Best</dt>
+            <dd id="best">0</dd>
+          </div>
+        </dl>
+      </header>
+
+      <div id="stage" class="stage">
+        <canvas
+          id="board"
+          tabindex="0"
+          role="img"
+          aria-label="Snake board. Use arrow keys or WASD to steer, Space to pause."
+        ></canvas>
+        <div id="overlay" class="overlay">
+          <img class="overlay-art" src="./assets/icon-512.png" alt="" width="160" height="160" />
+          <h2 id="overlay-title">Snake</h2>
+          <p id="overlay-text">Eat the apples, don't bite yourself.</p>
+          <button id="start" class="btn primary" type="button">Play</button>
+          <p class="hint">Arrows / WASD or swipe · Space pauses</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="pause" class="btn" type="button" disabled>Pause</button>
+        <label class="toggle"><input id="wrap" type="checkbox" /> Wrap walls</label>
+      </div>
+
+      <div id="pad" class="pad" aria-hidden="true">
+        <button type="button" tabindex="-1" data-dir="up" class="up">▲</button>
+        <button type="button" tabindex="-1" data-dir="left" class="left">◀</button>
+        <button type="button" tabindex="-1" data-dir="right" class="right">▶</button>
+        <button type="button" tabindex="-1" data-dir="down" class="down">▼</button>
+      </div>
+
+      <p id="live" class="sr-only" aria-live="polite"></p>
+    </main>
+    <noscript>Snake needs JavaScript.</noscript>
+  </body>
 </html>
